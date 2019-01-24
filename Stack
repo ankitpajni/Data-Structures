@@ -1,0 +1,55 @@
+   public class Stack{
+    private int arr[];
+    private int top;
+    private int size;
+    public Stack(int size)
+    {
+        this.size = size;
+        this.top = -1;
+        this.arr = new int[size];
+    }
+    public void push(int n)
+    {
+        if(this.isFull())
+        {
+            this.increasecapacity();
+        }
+        this.arr[++top] = n;
+    }
+    public int pop()
+    {
+        if(isEmpty())
+        {
+            System.out.println("stack is empty");
+            return 0;
+        }
+        else
+        {
+            int k = this.arr[top--];
+            return k;
+        }
+    }
+    public int peek()
+    {
+        return this.arr[top];
+    }
+    public boolean isEmpty()
+    {
+        return (top == -1);
+    }
+    public boolean isFull()
+    {
+        return (top == size-1);
+    }
+     public void increasecapacity()
+    {
+         int[] newarr = new int[this.size * 2];
+        for(int i=0;i<size;i++)
+        {
+            newarr[i]=this.arr[i];
+        }
+        this.size=this.size*2;
+        this.arr = newarr;
+    }
+}
+
