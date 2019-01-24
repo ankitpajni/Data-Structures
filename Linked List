@@ -1,0 +1,27 @@
+public class Linkedlist{
+    class Node{
+        private int data;
+        private Node next;
+        Node(int data)
+        {
+            this.data=0;
+            this.next=null;
+        }
+    private Node start = null;
+    private Node end = null;
+    private int size = 0;
+    public void insertAtStart(int val)
+    {
+        Node nptr = new Node(val, null);
+        size++ ;
+        if(start == null)
+        {
+            start = nptr;
+            end = start;
+        }
+        else
+        {
+            nptr.next=start;
+            start = nptr;
+        }
+    }
