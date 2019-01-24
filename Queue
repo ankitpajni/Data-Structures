@@ -1,0 +1,45 @@
+public class Queue{
+
+    private class Node{
+        private int data;
+        private Node next;
+        public Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    private Node head;
+    private Node tail;
+    private int size = 0;
+    public void enqueue(int a){
+        if(tail == null)
+        {
+            tail = new Node(a);
+            head=tail;
+        }
+        else
+        {
+            Node temp = tail;
+            tail = new Node(a);
+            temp.next = tail;
+        }
+        size++;
+    }
+    public int dequeue(){
+        int temp = peek();
+        head = head.next;
+        size--;
+        if( size == 0)
+            tail = null;
+        return temp;
+    }
+    public boolean isEmpty(){
+        return tail == null;
+    }
+    public int size(){
+        return size;
+    }
+    public int peek(){
+        return head.data;
+    }
+}
