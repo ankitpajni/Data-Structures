@@ -1,0 +1,25 @@
+public class Trie {
+    class Node {
+        String key;
+        Object value;
+        Node[] next = new Node[256];
+
+    }
+    private Node root = new Node();
+    public void insert(String key, Object value) {
+        root = insert(key, value, root, 0);
+    }
+    private Node insert(String key, Object value, Node x, int d) {
+        if(x == null){
+            x = new Node();
+        }
+        if(key.length() == d)
+        {
+            x.value = value;
+            return x;
+        }
+        char c = key.charAt(d);
+        x.next[c] = insert(key, value, x.next[c], d++);
+        return x;
+    }
+}
